@@ -24,7 +24,7 @@ struct GalleryImage {
 struct GalleryModel {
     var images: [GalleryImage] = []
     
-    mutating func generateImages(count: Int = 20) {
+    mutating func generateImages(count: Int = 100) {
         images = []
         for i in 1...count {
             let image = GalleryImage(id: "\(i)")

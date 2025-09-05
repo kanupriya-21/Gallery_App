@@ -24,6 +24,16 @@ class GalleryViewController: UIViewController {
         viewModel.loadImages()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Ensure collection view layout is properly configured
+        DispatchQueue.main.async {
+            self.galleryCollectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
+    
     private func setupViewModel() {
         viewModel.delegate = self
     }
@@ -41,7 +51,11 @@ class GalleryViewController: UIViewController {
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 10
             layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            layout.scrollDirection = .vertical
         }
+        
+        // Ensure collection view has proper constraints
+        galleryCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
@@ -73,9 +87,19 @@ extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
         
+        // Check if we need to load more images (pagination)
+        if viewModel.shouldLoadMore(for: indexPath.item) {
+            viewModel.loadMoreImages()
+        }
+        
         // Get the image URL from ViewModel
         if let imageURL = viewModel.getImageURL(at: indexPath.item) {
             cell.configure(with: imageURL)
+        } else {
+            // Handle case where no image URL is available
+            print("No image URL found for index: \(indexPath.item)")
+            // You can set a placeholder image or clear the cell
+            cell.galleryImageView.image = nil
         }
         
         return cell
@@ -88,31 +112,39 @@ extension GalleryViewController: UICollectionViewDelegate {
         // Handle cell selection through ViewModel
         viewModel.didSelectImage(at: indexPath.item)
     }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Calculate cell size for 2 columns
-        let spacing: CGFloat = 10
-        let totalSpacing = spacing * 3 // left + right + middle spacing
-        let availableWidth = collectionView.frame.width - totalSpacing
-        let cellWidth = availableWidth / 2
+        // Use a simple, fixed cell size to prevent layout issues
+        let cellSize: CGFloat = 180
         
-        // Make it square or adjust height as needed
-        let cellHeight = cellWidth
-        
-        return CGSize(width: cellWidth, height: cellHeight)
+        return CGSize(width: cellSize, height: cellSize)
     }
 }
 
-// MARK: - Image Loading Extension
+// MARK: - Image Loading Extension with Caching
 extension UIImageView {
+    private static var imageCache = NSCache<NSString, UIImage>()
+    
     func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
         
+        // Check cache first
+        let cacheKey = NSString(string: urlString)
+        if let cachedImage = UIImageView.imageCache.object(forKey: cacheKey) {
+            DispatchQueue.main.async {
+                self.image = cachedImage
+            }
+            return
+        }
+        
         // Show loading indicator
-        self.image = nil
+        DispatchQueue.main.async {
+            self.image = nil
+        }
         
         // Load image asynchronously
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
@@ -121,8 +153,13 @@ extension UIImageView {
                 return
             }
             
+            guard let image = UIImage(data: data) else { return }
+            
+            // Cache the image
+            UIImageView.imageCache.setObject(image, forKey: cacheKey)
+            
             DispatchQueue.main.async {
-                self?.image = UIImage(data: data)
+                self?.image = image
             }
         }.resume()
     }

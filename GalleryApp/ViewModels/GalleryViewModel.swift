@@ -18,11 +18,43 @@ class GalleryViewModel {
     // MARK: - Properties
     private var model = GalleryModel()
     weak var delegate: GalleryViewModelDelegate?
+    private let pageSize = 20
+    private var currentPage = 1
+    private var isLoading = false
     
     // MARK: - Public Methods
     func loadImages() {
-        model.generateImages(count: 20)
-        delegate?.didLoadImages()
+        currentPage = 1
+        model.images = []
+        loadMoreImages()
+    }
+    
+    func loadMoreImages() {
+        guard !isLoading else { return }
+        
+        isLoading = true
+        print("Loading page \(currentPage)...")
+        
+        // Simulate network delay
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            // Generate new images for current page
+            let startIndex = (self.currentPage - 1) * self.pageSize + 1
+            let endIndex = self.currentPage * self.pageSize
+            
+            for i in startIndex...endIndex {
+                let image = GalleryImage(id: "\(i)")
+                self.model.images.append(image)
+            }
+            
+            self.currentPage += 1
+            self.isLoading = false
+            
+            DispatchQueue.main.async {
+                self.delegate?.didLoadImages()
+            }
+        }
     }
     
     func getImageCount() -> Int {
@@ -40,5 +72,10 @@ class GalleryViewModel {
     
     func didSelectImage(at index: Int) {
         delegate?.didSelectImage(at: index)
+    }
+    
+    func shouldLoadMore(for index: Int) -> Bool {
+        // Load more when user reaches the last 5 items
+        return index >= model.images.count - 5 && !isLoading
     }
 }
