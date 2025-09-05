@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     private func setupUserInfo() {
         // Display the logged-in user's email
         if let user = Auth.auth().currentUser {
-            userName.text = user.email ?? "No email found"
+            userName.text = user.displayName ?? "No name found"
         } else {
             userName.text = "Not logged in"
         }

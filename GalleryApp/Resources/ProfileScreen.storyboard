@@ -30,7 +30,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wfc-qp-6Ic"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

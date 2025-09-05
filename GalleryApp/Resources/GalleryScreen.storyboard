@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-2o-d3F">
-                                <rect key="frame" x="0.0" y="203" width="393" height="615"/>
+                                <rect key="frame" x="0.0" y="163" width="393" height="655"/>
                                 <color key="backgroundColor" red="0.7180519405107938" green="0.7947580597986903" blue="0.81364771262886593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qbu-hb-r9q">
                                     <size key="itemSize" width="128" height="128"/>
@@ -57,7 +57,7 @@
                         <constraints>
                             <constraint firstItem="7dd-4e-nhl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="6RG-n0-dVu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Db-2o-d3F" secondAttribute="trailing" id="IvS-H0-NT0"/>
-                            <constraint firstItem="5Db-2o-d3F" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="KAd-NA-tHG"/>
+                            <constraint firstItem="5Db-2o-d3F" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="KAd-NA-tHG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5Db-2o-d3F" secondAttribute="bottom" id="OLJ-Ve-QtE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7dd-4e-nhl" secondAttribute="trailing" constant="20" id="gPw-T9-MdA"/>
                             <constraint firstItem="5Db-2o-d3F" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lfL-8R-iQ7"/>

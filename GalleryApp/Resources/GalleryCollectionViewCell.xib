@@ -17,18 +17,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tNt-Ob-Ckv">
-                        <rect key="frame" x="5" y="5.3333333333333321" width="40" height="39.666666666666671"/>
+                        <rect key="frame" x="0.0" y="0.33333333333333215" width="50" height="49.666666666666671"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.78875963869999999" green="0.93825740719999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="tNt-Ob-Ckv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="7tO-EO-a5W"/>
-                <constraint firstItem="tNt-Ob-Ckv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="YJ6-D5-cN7"/>
-                <constraint firstAttribute="trailing" secondItem="tNt-Ob-Ckv" secondAttribute="trailing" constant="5" id="evo-wD-8VY"/>
-                <constraint firstAttribute="bottom" secondItem="tNt-Ob-Ckv" secondAttribute="bottom" constant="5" id="kAw-yo-uvF"/>
+                <constraint firstItem="tNt-Ob-Ckv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7tO-EO-a5W"/>
+                <constraint firstItem="tNt-Ob-Ckv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YJ6-D5-cN7"/>
+                <constraint firstAttribute="trailing" secondItem="tNt-Ob-Ckv" secondAttribute="trailing" id="evo-wD-8VY"/>
+                <constraint firstAttribute="bottom" secondItem="tNt-Ob-Ckv" secondAttribute="bottom" id="kAw-yo-uvF"/>
             </constraints>
             <connections>
                 <outlet property="galleryImageView" destination="tNt-Ob-Ckv" id="ivi-us-YBq"/>

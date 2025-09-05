@@ -20,13 +20,11 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        // Reset image view to prevent layout issues
         galleryImageView.image = nil
         galleryImageView.transform = .identity
     }
     
     private func setupImageView() {
-        // Configure image view appearance
         galleryImageView.contentMode = .scaleAspectFill
         galleryImageView.clipsToBounds = true
         galleryImageView.layer.cornerRadius = 8

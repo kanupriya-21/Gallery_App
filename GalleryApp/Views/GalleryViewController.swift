@@ -18,7 +18,6 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         setupViewModel()
         setupCollectionView()
         viewModel.loadImages()
@@ -27,11 +26,13 @@ class GalleryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Ensure collection view layout is properly configured
         DispatchQueue.main.async {
-            self.galleryCollectionView.collectionViewLayout.invalidateLayout()
+            self.galleryCollectionView.setNeedsLayout()
+            self.galleryCollectionView.layoutIfNeeded()
         }
     }
+    
+    
     
     
     private func setupViewModel() {
@@ -39,11 +40,9 @@ class GalleryViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        // Set delegate and data source
         galleryCollectionView.delegate = self
         galleryCollectionView.dataSource = self
         
-        // Register your custom cell (you'll create the XIB)
         galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GalleryCollectionViewCell")
         
         // Setup collection view layout
@@ -53,8 +52,6 @@ class GalleryViewController: UIViewController {
             layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             layout.scrollDirection = .vertical
         }
-        
-        // Ensure collection view has proper constraints
         galleryCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -87,18 +84,18 @@ extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
         
-        // Check if we need to load more images (pagination)
+        // Check load more images (pagination)
         if viewModel.shouldLoadMore(for: indexPath.item) {
             viewModel.loadMoreImages()
         }
         
-        // Get the image URL from ViewModel
+        // Get image URL from ViewModel
         if let imageURL = viewModel.getImageURL(at: indexPath.item) {
             cell.configure(with: imageURL)
         } else {
             // Handle case where no image URL is available
             print("No image URL found for index: \(indexPath.item)")
-            // You can set a placeholder image or clear the cell
+            // set a placeholder image or clear the cell
             cell.galleryImageView.image = nil
         }
         
@@ -118,9 +115,11 @@ extension GalleryViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Use a simple, fixed cell size to prevent layout issues
         let cellSize: CGFloat = 180
         
+//        // Debug print to track sizing
+//        print("Cell size for index \(indexPath.item): \(cellSize)x\(cellSize)")
+//        
         return CGSize(width: cellSize, height: cellSize)
     }
 }
@@ -175,8 +174,5 @@ extension GalleryViewController: GalleryViewModelDelegate {
     
     func didSelectImage(at index: Int) {
         print("Selected item at index: \(index)")
-        // You can add navigation to detail view here
-        // let detailVC = DetailViewController()
-        // navigationController?.pushViewController(detailVC, animated: true)
     }
 }
