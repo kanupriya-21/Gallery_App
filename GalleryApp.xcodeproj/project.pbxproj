@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B0A69FF02E6B64540033BC98 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B0A69FEF2E6B64540033BC98 /* FirebaseAuth */; };
+		B0A69FF22E6B64590033BC98 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = B0A69FF12E6B64590033BC98 /* FirebaseCore */; };
+		B0A69FF42E6B64650033BC98 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B0A69FF32E6B64650033BC98 /* FirebaseAnalytics */; };
+		B0A69FF72E6B655E0033BC98 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0A69FF62E6B655E0033BC98 /* GoogleSignIn */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B01036C02E69E94800BB2890 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,9 +40,17 @@
 		B01036D12E69E94800BB2890 /* Exceptions for "GalleryApp" folder in "GalleryApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				GalleryAppTests/GalleryAppTests.swift,
 				Info.plist,
 			);
 			target = B01036A52E69E94600BB2890 /* GalleryApp */;
+		};
+		B0680C4F2E6B737600AC27F8 /* Exceptions for "GalleryApp" folder in "GalleryAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				GalleryAppTests/GalleryAppTests.swift,
+			);
+			target = B01036BE2E69E94800BB2890 /* GalleryAppTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -44,13 +59,9 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				B01036D12E69E94800BB2890 /* Exceptions for "GalleryApp" folder in "GalleryApp" target */,
+				B0680C4F2E6B737600AC27F8 /* Exceptions for "GalleryApp" folder in "GalleryAppTests" target */,
 			);
 			path = GalleryApp;
-			sourceTree = "<group>";
-		};
-		B01036C22E69E94800BB2890 /* GalleryAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GalleryAppTests;
 			sourceTree = "<group>";
 		};
 		B01036CC2E69E94800BB2890 /* GalleryAppUITests */ = {
@@ -65,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A69FF22E6B64590033BC98 /* FirebaseCore in Frameworks */,
+				B0A69FF72E6B655E0033BC98 /* GoogleSignIn in Frameworks */,
+				B0A69FF02E6B64540033BC98 /* FirebaseAuth in Frameworks */,
+				B0A69FF42E6B64650033BC98 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				B01036A82E69E94600BB2890 /* GalleryApp */,
-				B01036C22E69E94800BB2890 /* GalleryAppTests */,
 				B01036CC2E69E94800BB2890 /* GalleryAppUITests */,
+				B0A69FEE2E6B64540033BC98 /* Frameworks */,
 				B01036A72E69E94600BB2890 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +118,13 @@
 				B01036C92E69E94800BB2890 /* GalleryAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B0A69FEE2E6B64540033BC98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +147,10 @@
 			);
 			name = GalleryApp;
 			packageProductDependencies = (
+				B0A69FEF2E6B64540033BC98 /* FirebaseAuth */,
+				B0A69FF12E6B64590033BC98 /* FirebaseCore */,
+				B0A69FF32E6B64650033BC98 /* FirebaseAnalytics */,
+				B0A69FF62E6B655E0033BC98 /* GoogleSignIn */,
 			);
 			productName = GalleryApp;
 			productReference = B01036A62E69E94600BB2890 /* GalleryApp.app */;
@@ -142,9 +168,6 @@
 			);
 			dependencies = (
 				B01036C12E69E94800BB2890 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B01036C22E69E94800BB2890 /* GalleryAppTests */,
 			);
 			name = GalleryAppTests;
 			packageProductDependencies = (
@@ -208,6 +231,10 @@
 			);
 			mainGroup = B010369D2E69E94600BB2890;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B0A69FE92E6B60E50033BC98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B0A69FF52E6B65550033BC98 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B01036A72E69E94600BB2890 /* Products */;
 			projectDirPath = "";
@@ -293,10 +320,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GalleryApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = loginScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,10 +349,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GalleryApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = loginScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,6 +598,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0A69FE92E6B60E50033BC98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+		B0A69FF52E6B65550033BC98 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0A69FEF2E6B64540033BC98 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A69FE92E6B60E50033BC98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B0A69FF12E6B64590033BC98 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A69FE92E6B60E50033BC98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		B0A69FF32E6B64650033BC98 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A69FE92E6B60E50033BC98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B0A69FF62E6B655E0033BC98 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0A69FF52E6B65550033BC98 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B010369E2E69E94600BB2890 /* Project object */;
 }

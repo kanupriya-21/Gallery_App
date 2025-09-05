@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="GalleryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGu-Mp-9Kk">
+                                <rect key="frame" x="0.0" y="159" width="393" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ofx-kh-eQ4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="40"/>
+                                <color key="textColor" red="0.11744791315950696" green="0.29565791546721121" blue="0.39455138530927836" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-pi-Dx8">
+                                <rect key="frame" x="20" y="279" width="353" height="519"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="wJ6-zT-Mym">
+                                        <rect key="frame" x="0.0" y="68.666666666666686" width="353" height="300.33333333333331"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaS-4N-EKl">
+                                                <rect key="frame" x="71.333333333333329" y="0.0" width="210.33333333333337" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="bFc-m7-dZO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJ9-aZ-ouy">
+                                                <rect key="frame" x="131.66666666666666" y="140" width="90" height="40"/>
+                                                <color key="backgroundColor" red="0.1174479132" green="0.29565791549999998" blue="0.3945513853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Djp-hm-B1W"/>
+                                                    <constraint firstAttribute="width" constant="90" id="FGa-oD-Ngc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Sign in">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="signInPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MeL-L9-d0Y"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can only sign in using google " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqC-Eo-qTA">
+                                                <rect key="frame" x="48.333333333333343" y="279.99999999999994" width="256.66666666666663" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wJ6-zT-Mym" firstAttribute="leading" secondItem="M6l-pi-Dx8" secondAttribute="leading" id="Sk8-iQ-7sd"/>
+                                    <constraint firstAttribute="bottom" secondItem="wJ6-zT-Mym" secondAttribute="bottom" constant="150" id="cxx-9g-yXw"/>
+                                    <constraint firstAttribute="trailing" secondItem="wJ6-zT-Mym" secondAttribute="trailing" id="k8o-cf-qe9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M6l-pi-Dx8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1oq-vX-xAh"/>
+                            <constraint firstItem="NGu-Mp-9Kk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ocs-FE-yMQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M6l-pi-Dx8" secondAttribute="trailing" constant="20" id="PPp-gs-07f"/>
+                            <constraint firstItem="NGu-Mp-9Kk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="SFG-TB-Pg7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="M6l-pi-Dx8" secondAttribute="bottom" constant="20" id="W5D-Ul-4CJ"/>
+                            <constraint firstItem="M6l-pi-Dx8" firstAttribute="top" secondItem="NGu-Mp-9Kk" secondAttribute="bottom" constant="20" id="bQS-1G-Z8y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NGu-Mp-9Kk" secondAttribute="trailing" id="swt-Uq-bv3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="signInButton" destination="yJ9-aZ-ouy" id="rpV-d6-e1b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
