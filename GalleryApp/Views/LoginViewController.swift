@@ -141,10 +141,13 @@ class LoginViewController: UIViewController {
                 // User is signed in successfully
                 print("Sign-in completed successfully!")
                 
+                // Hide loading indicator first
+                self?.hideLoading()
+                
                 // Navigate to gallery view controller with a small delay for smooth transition
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                    self?.navigateToGallery()
-//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self?.navigateToGallery()
+                }
             }
         }
     }

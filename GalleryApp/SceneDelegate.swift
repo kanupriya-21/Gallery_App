@@ -46,13 +46,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func showGalleryViewController() {
-        // Navigate to the actual GalleryViewController from storyboard
+        // Navigate to the Navigation Controller (which is set as initial view controller)
         let storyboard = UIStoryboard(name: "GalleryScreen", bundle: nil)
-        if let galleryVC = storyboard.instantiateViewController(withIdentifier: "GalleryViewController") as? GalleryViewController {
-            // Add smooth transition animation
-            UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                self.window?.rootViewController = galleryVC
-            }, completion: nil)
+        print("Storyboard loaded: \(storyboard)")
+        
+        if let initialVC = storyboard.instantiateInitialViewController() {
+            print("Initial view controller found: \(type(of: initialVC))")
+            
+            if let navController = initialVC as? UINavigationController {
+                print("Navigation controller found, setting as root")
+                // Add smooth transition animation
+                UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.window?.rootViewController = navController
+                }, completion: nil)
+            } else {
+                print("Initial view controller is not a navigation controller, it's: \(type(of: initialVC))")
+                // Fallback: set the initial view controller directly
+                UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.window?.rootViewController = initialVC
+                }, completion: nil)
+            }
+        } else {
+            print("No initial view controller found in storyboard")
         }
     }
     
