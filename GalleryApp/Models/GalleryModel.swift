@@ -19,6 +19,13 @@ struct GalleryImage {
         self.height = height
         self.imageURL = "https://picsum.photos/\(width)/\(height)?random=\(id)"
     }
+    
+    init(id: String, customURL: String, width: Int = 400, height: Int = 400) {
+        self.id = id
+        self.width = width
+        self.height = height
+        self.imageURL = customURL
+    }
 }
 
 struct GalleryModel {
